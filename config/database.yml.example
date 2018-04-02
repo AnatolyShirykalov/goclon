@@ -1,0 +1,2 @@
+adapter: postgres
+settings: "host=localhost user=anatoly dbname=clonclient sslmode=disable password=anatoly"

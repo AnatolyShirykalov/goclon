@@ -1,0 +1,4 @@
+/tmp
+/log/*.log
+/config/headers.yml
+/config/database.yml
