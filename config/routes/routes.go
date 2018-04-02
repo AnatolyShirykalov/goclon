@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"../../app/controllers"
 	"../admin"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -21,5 +22,6 @@ func Router() *gin.Engine {
 	mux := http.NewServeMux()
 	admin.Admin.MountTo("/admin", mux)
 	authorized.Any("/admin/*w", gin.WrapH(mux))
+	authorized.GET("/", controllers.HomeIndex)
 	return r
 }
