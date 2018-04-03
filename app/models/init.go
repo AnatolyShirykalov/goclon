@@ -26,7 +26,7 @@ func init() {
 	}
 	log.Printf("connecting to %v, conf: %v", Config["adapter"], Config["settings"])
 	DB, err = gorm.Open(Config["adapter"], Config["settings"])
-	DB.LogMode(false)
+	DB.LogMode(true)
 	if err != nil {
 		panic(err)
 	}
