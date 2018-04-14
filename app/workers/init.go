@@ -5,7 +5,7 @@ import (
 	"../../parser"
 	"errors"
 	"fmt"
-	"github.com/AnatolyShirykalov/worker"
+	"github.com/qor/worker"
 )
 
 type ParserJobArgument struct {

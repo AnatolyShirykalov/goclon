@@ -14,21 +14,17 @@ func Router() *gin.Engine {
 	if r != nil {
 		return r
 	}
-	acc := gin.Accounts{
-		"anatoly": "1234",
-	}
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowOrigins = []string{"http://localhost:3000", "https://clonclient.shirykalov.ru", "http://localhost:5292", "http://192.168.1.103:3000"}
 	config.AllowCredentials = true
 	config.AllowMethods = []string{"GET", "PUT"}
 
 	r = gin.Default()
 	r.Use(cors.New(config))
-	authorized := r.Group("/", gin.BasicAuth(acc))
 	mux := http.NewServeMux()
 	admin.Admin.MountTo("/admin", mux)
-	authorized.Any("/admin/*w", gin.WrapH(mux))
-	authorized.GET("/", controllers.HomeIndex)
+	r.Any("/admin/*w", gin.WrapH(mux))
+	r.GET("/", controllers.HomeIndex)
 	comments := r.Group("/api/comments")
 	comments.PUT("/", controllers.CommentsUpdate)
 	comments.GET("/", controllers.CommentsIndex)

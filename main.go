@@ -20,7 +20,6 @@ func main() {
 	models.DB.SetLogger(log.New(f, "\n", 0))
 	//log.SetOutput(f)
 
-	//parser.Test()
 	r := routes.Router()
 	gin.SetMode(gin.DebugMode)
 	println(config.Config.Port)
