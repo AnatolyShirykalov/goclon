@@ -2,9 +2,12 @@ package main
 
 import (
 	"./app/models"
-	_ "./app/workers"
+	"./app/workers"
 	"./config"
+	"./config/admin"
+	"./config/database"
 	"./config/routes"
+	auth "./config/siteauth"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -12,6 +15,11 @@ import (
 )
 
 func main() {
+	database.Init()
+	models.Init()
+	auth.Init()
+	admin.Init()
+	workers.Init()
 	f, err := os.OpenFile("log/sql.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		panic(err)

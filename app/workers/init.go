@@ -19,7 +19,7 @@ func (a ParserJobArgument) String() string {
 
 var Worker *worker.Worker
 
-func init() {
+func Init() {
 	Worker = worker.New()
 	Worker.RegisterJob(&worker.Job{
 		Name: "Parse Classic-online.ru",

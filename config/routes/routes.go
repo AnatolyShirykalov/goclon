@@ -3,8 +3,10 @@ package routes
 import (
 	"../../app/controllers"
 	"../admin"
+	auth "../siteauth"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
 	"net/http"
 )
 
@@ -19,8 +21,11 @@ func Router() *gin.Engine {
 	config.AllowCredentials = true
 	config.AllowMethods = []string{"GET", "PUT"}
 
+	Auth := auth.Auth
+
 	r = gin.Default()
 	r.Use(cors.New(config))
+	r.Any("/auth/*w", gin.WrapH(Auth.NewServeMux()))
 	mux := http.NewServeMux()
 	admin.Admin.MountTo("/admin", mux)
 	r.Any("/admin/*w", gin.WrapH(mux))

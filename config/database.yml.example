@@ -1,2 +1,10 @@
-adapter: postgres
-settings: "host=localhost user=anatoly dbname=clonclient sslmode=disable password=anatoly"
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: clonclient
+  pool: 5
+  host: localhost
+  username: anatoly
+  password: anatoly
+  template: template0
+

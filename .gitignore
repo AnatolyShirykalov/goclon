@@ -2,3 +2,4 @@
 /log/*.log
 /config/headers.yml
 /config/database.yml
+/config/auth.yml
